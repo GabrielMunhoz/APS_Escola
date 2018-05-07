@@ -1,11 +1,14 @@
+import java.text.ParseException;
 
 public class Escola {
 	static Console console = new Console();
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
       Aluno aluno[] = CriaAluno();
       Turma turma = criaTurma(aluno);
-      chamada(turma);
-      
+      Aula aula[] = new Aula[5];
+      aula[0] = new Aula(turma,console.dString("Digite a data 'dd/mm/aaaa': "));
+      aula[0].chamada();
+      System.out.println(aula[0].toString());
     }
     private static Aluno[] CriaAluno() {
     	System.out.println("------Criando alunos-------");
@@ -46,11 +49,10 @@ public class Escola {
     public static void chamada(Turma turma) {
     	System.out.println("------Realizando Chamada-------");
     	System.out.println("------Alunos da turma de "+turma.getDisciplina()+"-------");
-    	System.out.print(turma.escreve());
-    	System.out.println("Para realiza a chamada! ");
-    	int x=0;
-    	while(x<turma.getAlunos().length) {
-    		turma.alunoPresente(console.dInt("Digite a matricula:"));
+    	
+    	for(String p : turma.getAlunos()) {
+    		System.out.println(p);
+    		p+=console.dString("Aluno esta presente?");
     	}
     	
     }

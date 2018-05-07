@@ -1,11 +1,18 @@
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Aula {
-    SimpleDateFormat sdf1= new SimpleDateFormat("dd/MM/yyyy"); //você pode usar outras máscaras
-    private Date data=new Date();
+    SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); //você pode usar outras máscaras
+    private Date data;
+    private Turma turma;
     private String descricao;
-
+    
+    
+    public Aula(Turma t, String d) {
+    	turma = t;
+    	data = formato.parse(d);
+    }
     public String getDescricao() {
         return descricao;
     }
@@ -21,5 +28,15 @@ public class Aula {
     public void setData(Date data) {
         this.data = data;
     }
-
+    
+    public void chamada() {
+    	for(String p : turma.getAlunos()) {
+    		System.out.println(p);
+    	}
+    }
+	@Override
+	public String toString() {
+		return "Aula [data=" + formato.format(data) + "]";
+	}
+    
 }
