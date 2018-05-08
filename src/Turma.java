@@ -13,7 +13,9 @@ public class Turma{
 		disciplina = disc;
 	}
 	
-	public String[] getAlunos() {
+	
+	
+	/*public String[] getAlunos() {
 	
 		String alu[] = new String [5];
 		
@@ -27,16 +29,18 @@ public class Turma{
 		Arrays.sort(alu);
 		
 		return alu;
+	}*/
+
+	public Aluno[] getAlunos() {
+		Arrays.sort(alunos);
+		return alunos;
 	}
-	public void setAlunos(Aluno[] alunos) {
-		
-		this.alunos = alunos;
-	}
+
+
 
 	@Override
 	public String toString() {
-		return "Turma [Alunos = " + Arrays.toString(getAlunos()) + ""
-				+ "Disciplina da turma = "+ disciplina.toString() +"]";
+		return "Turma "+disciplina.toString()+ "\nAlunos:" + Arrays.toString(getAlunos());
 	}
 	
 	

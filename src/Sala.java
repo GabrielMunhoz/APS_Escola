@@ -1,7 +1,7 @@
 import java.text.ParseException;
 
-public class Escola {
-	
+public class Sala {
+		
 	static Console console = new Console();
 	
 	static Turma turma[] = new Turma[5];
@@ -11,8 +11,12 @@ public class Escola {
 	public static void main(String[] args) throws ParseException {
 		while(true) {
 			Aluno aluno[]= CriaAluno();
+			
 			criaTurma(aluno);
+			
 			criaAula();
+			
+			
 		}
 		
     }
@@ -60,6 +64,8 @@ public class Escola {
 	private static Disciplina cadastraDisciplina() {
 		//cria a disciplina 
 		
+		System.out.println("------Cadastrando Disciplina-------");
+		
 		Disciplina disc = new Disciplina(console.dString("Digite a disciplina: "));	
 		
 		return disc;
@@ -69,13 +75,18 @@ public class Escola {
 	public static void criaAula() throws ParseException {
 		//cria aula para turma 
 		
+		System.out.println("------Cadastrando Aula-------");
+		
 		int id = 0; // contador
 		
 		while(true) {
 			
 			if(turma[id] != null ) {
+				System.out.println( "--------------------------------" );
 				
-				System.out.println("Posição ["+id+"] " + turma[id].toString());
+				System.out.println("Posição ["+id+"]\n" + turma[id].toString());
+
+				System.out.println( "--------------------------------" );
 			
 			}else{
 				
@@ -86,14 +97,16 @@ public class Escola {
 			
 		}// verifica quantas turma estao cadastradas
 		
-		int esc = console.dInt("Digite a posição da turma que deseja inserir uma aula: "); // escola qual turma sera adicionado aula
+		int esc = console.dInt("Digite a posição da turma para inserir uma aula: "); // escole qual turma sera adicionado aula
 		
 		id = 0 ;
 		
 		while(id<aula.length) {
 			
 			if( aula[id] == null ) {
+				
 				break;
+			
 			}
 			
 			id++;
@@ -101,17 +114,14 @@ public class Escola {
 		}// fim while que verifica posicao livre
 		
 		aula[id] = new Aula(turma[esc] , console.dString("Digite a data 'dd/mm/aaaa'"), 
-				console.dString("Digite a descriçcao da aula") ); // cria a aula passando a turma escolhida anteriormente 
-																	// a data da aula e a descricao 
+				console.dString("Digite a descriçcao da aula") ); 
+		// cria a aula passando a turma escolhida anteriormente 
+		
+		aula[id].chamada(); //Realiza chamada conforme aula adicionada
 		
 		
 	}// fim metodo cria aula
 	
-	public static void chamada(Turma turma) {
-    	// metodo que realiza a chamada por aula 
-		
-		
-    }
     public static void adicionarAvaliação() {
     	//adiciona ate 3 avaliacoes para cada aluno selecionando a turma cadastrada
     	

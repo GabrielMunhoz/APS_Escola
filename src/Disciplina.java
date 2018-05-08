@@ -31,9 +31,7 @@ public class Disciplina {
 	
 	public String toString() {
 	
-		return "Disciplina [Disciplina =" + getDisciplina() + ",Avaliações()="
-		
-				+ Arrays.toString(getAvaliacoes()) + "]";
+		return "[Disciplina =" + getDisciplina()+"]";
 	}
 	
 	

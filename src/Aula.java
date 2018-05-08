@@ -1,5 +1,7 @@
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 
 public class Aula {
@@ -35,13 +37,25 @@ public class Aula {
     }
     
     public void chamada() {
-    	for(String p : turma.getAlunos()) {
-    		System.out.println(p);
+    	Console console = new Console();
+    	
+    	for(Aluno p : turma.getAlunos()) {
+    		
+    		System.out.println(p.getNome());
+    		
+    		p.setPresenca(console.dString("Presença: P ou A?"));
     	}
+    	for(Aluno p : turma.getAlunos()) {
+    		
+    		System.out.println(p.toString()+"Presença : "+p.getPresenca());
+    		
+    	}
+    	
     }
 	@Override
 	public String toString() {
 		return "Aula [data=" + formato.format(data) + "]";
 	}
+	
     
 }
