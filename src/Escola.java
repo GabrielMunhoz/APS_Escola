@@ -1,67 +1,123 @@
 import java.text.ParseException;
 
 public class Escola {
+	
 	static Console console = new Console();
-    public static void main(String[] args) throws ParseException {
-      Aluno aluno[] = CriaAluno();
-      Turma turma = criaTurma(aluno);
-      Aula aula[] = new Aula[5];
-      aula[0] = new Aula(turma,console.dString("Digite a data 'dd/mm/aaaa': "));
-      aula[0].chamada();
-      System.out.println(aula[0].toString());
-    }
-    private static Aluno[] CriaAluno() {
-    	System.out.println("------Criando alunos-------");
-    	//Cria turma com no maximo 5 alunos
-		Aluno aluno[] = new Aluno[5];
-		int x = 0;
-		while(x<aluno.length) {
-			aluno[x++] = new Aluno(console.dString("Digite o nome do aluno:")
-					,x);
+	
+	static Turma turma[] = new Turma[5];
+	
+	static Aula aula[] = new Aula[10];
+	
+	public static void main(String[] args) throws ParseException {
+		while(true) {
+			Aluno aluno[]= CriaAluno();
+			criaTurma(aluno);
+			criaAula();
 		}
-		System.out.println("------alunos Criados-------");
-		return aluno;
-	}
-	public static Turma criaTurma(Aluno[] alunos) {
-		System.out.println("------Criando Turma-------");
-		Turma turma1[] = new Turma[5];
-		int x = 0,id=0;
-		while(x<5) {
-			if(turma1[x]==null) {
-				id=x;
-				break;
-			}
-			x++;
-		}
-		turma1[id] = new Turma(alunos,console.dString("Digite a disciplina: "));
-		int y = 0; 
-		while(y<turma1.length) {
-			if(turma1[y]!=null) {
-			System.out.println("Posição["+y+"]"+turma1[y].getDisciplina());
-			}
-			y++;
-		}
-		int esc = console.dInt("Digite qual a posição da turma desejada: ");
-		System.out.println("------Turma criada-------");
-		return turma1[esc];
 		
     }
-    public static void chamada(Turma turma) {
-    	System.out.println("------Realizando Chamada-------");
-    	System.out.println("------Alunos da turma de "+turma.getDisciplina()+"-------");
+    private static Aluno[] CriaAluno() {
+    	// cria no maximo 5 alunos e retorna 
     	
-    	for(String p : turma.getAlunos()) {
-    		System.out.println(p);
-    		p+=console.dString("Aluno esta presente?");
-    	}
+    	System.out.println("------Cadastrando Alunos-------");
     	
+    	Aluno alun[] = new Aluno[5];
+    	
+    	int id = 0; 
+    		
+    		while(id<alun.length) {
+    			
+    			alun[id++] = new Aluno(console.dString("Digite o Nome do aluno: "), id );
+    		
+    		}
+    	
+    		return alun;
+    }//Final metodo cria aluno 
+    
+	public static void criaTurma(Aluno[] alunos) {
+		// Cria turma recebendo os alunos e chama o metodo cadastra disciplina
+		
+		System.out.println("------Criando Turma-------");
+	
+		int id = 0;
+		
+		while(id<turma.length) {
+			
+			if(turma[id]== null){ 
+				
+				break;
+				
+			}//fim if que verifica posicao livre no array t[]
+			
+			id++;
+		
+		}// fim while
+			
+		turma[id] = new Turma ( alunos , cadastraDisciplina() ); //recebe o nome da disciplina
+	
+    }// final metodo cria turma 
+    
+	private static Disciplina cadastraDisciplina() {
+		//cria a disciplina 
+		
+		Disciplina disc = new Disciplina(console.dString("Digite a disciplina: "));	
+		
+		return disc;
+	
+	}// final metodo cadastra disciplina
+	
+	public static void criaAula() throws ParseException {
+		//cria aula para turma 
+		
+		int id = 0; // contador
+		
+		while(true) {
+			
+			if(turma[id] != null ) {
+				
+				System.out.println("Posição ["+id+"] " + turma[id].toString());
+			
+			}else{
+				
+				break;
+			}
+			
+			id++;
+			
+		}// verifica quantas turma estao cadastradas
+		
+		int esc = console.dInt("Digite a posição da turma que deseja inserir uma aula: "); // escola qual turma sera adicionado aula
+		
+		id = 0 ;
+		
+		while(id<aula.length) {
+			
+			if( aula[id] == null ) {
+				break;
+			}
+			
+			id++;
+		
+		}// fim while que verifica posicao livre
+		
+		aula[id] = new Aula(turma[esc] , console.dString("Digite a data 'dd/mm/aaaa'"), 
+				console.dString("Digite a descriçcao da aula") ); // cria a aula passando a turma escolhida anteriormente 
+																	// a data da aula e a descricao 
+		
+		
+	}// fim metodo cria aula
+	
+	public static void chamada(Turma turma) {
+    	// metodo que realiza a chamada por aula 
+		
+		
     }
     public static void adicionarAvaliação() {
-    	//adiciona ate 3 avaliacoes para cada aluno 
+    	//adiciona ate 3 avaliacoes para cada aluno selecionando a turma cadastrada
     	
     }
     public static void verificaMediaAlunos() {
-    	//verifica media dos alunos
+    	//verifica media dos alunos de cada turma 
     	
     }
 }

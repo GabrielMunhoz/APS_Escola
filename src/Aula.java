@@ -9,9 +9,14 @@ public class Aula {
     private String descricao;
     
     
-    public Aula(Turma t, String d) {
+    public Aula(Turma t, String data, String descri) throws ParseException {
+    	
     	turma = t;
-    	data = formato.parse(d);
+    	
+    	this.data = formato.parse(data);
+    	
+    	descricao = descri;
+    	
     }
     public String getDescricao() {
         return descricao;

@@ -7,8 +7,11 @@ public class Console {
 		while(true) {	
 			try {
 				return new Scanner(System.in).nextLine();
+				
 			}catch(Exception ex){
+				
 				System.out.println("Valor inserido Invalido");
+				
 				}	
 			}
 		
@@ -16,12 +19,18 @@ public class Console {
 
 	public int dInt(String string) {
 		System.out.println(string);
+		
 		while(true) {	
+		
 			try {
+			
 				return new Scanner(System.in).nextInt();
-			}catch(Exception ex){
+			}
+			catch(Exception ex){
+				
 				System.out.println("Valor inserido Invalido");
-				}	
+				
+			}	
 		}
 	}
 
