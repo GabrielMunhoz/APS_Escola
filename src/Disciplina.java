@@ -3,7 +3,7 @@ import java.util.Arrays;
 public class Disciplina {
 	
 	private String disciplina;
-	private Avaliacao[] avaliacoes;
+	private Avaliacao[] avaliacoes = new Avaliacao[3];
 	
 	public Disciplina(String nomeDis) {
 		
@@ -15,16 +15,16 @@ public class Disciplina {
 		return disciplina;
 	
 	}
-		
-	public Avaliacao[] getAvaliacoes() {
 	
-		return avaliacoes;
-	}
-	
-	
-	public void setAvaliacoes(Avaliacao[] avaliacoes) {
-	
-		this.avaliacoes = avaliacoes;
+	public void setAvaliacoes(Avaliacao avaliacao) {
+		int id = 0;
+		while(true) {
+			if(avaliacoes[id]==null) {
+				break;
+			}
+			id++;
+		}
+		avaliacoes[id] = avaliacao;
 	}
 	
 	@Override

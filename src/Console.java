@@ -33,5 +33,22 @@ public class Console {
 			}	
 		}
 	}
+	
+	public Double dDouble(String string) {
+		System.out.println(string);
+		
+		while(true) {	
+		
+			try {
+			
+				return new Scanner(System.in).nextDouble();
+			}
+			catch(Exception ex){
+				
+				System.out.println("Valor inserido Invalido");
+				
+			}	
+		}
+	}
 
 }

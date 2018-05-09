@@ -12,24 +12,6 @@ public class Turma{
 		
 		disciplina = disc;
 	}
-	
-	
-	
-	/*public String[] getAlunos() {
-	
-		String alu[] = new String [5];
-		
-		int id=0;
-		
-		for(Aluno a : alunos) {
-		
-			alu[id++] = "\n"+a.toString();
-		}
-		
-		Arrays.sort(alu);
-		
-		return alu;
-	}*/
 
 	public Aluno[] getAlunos() {
 		Arrays.sort(alunos);
@@ -43,6 +25,15 @@ public class Turma{
 		return "Turma "+disciplina.toString()+ "\nAlunos:" + Arrays.toString(getAlunos());
 	}
 	
+	public void setAvaliacao(Avaliacao avaliacao) {
+		disciplina.setAvaliacoes(avaliacao);
+		
+		for(Aluno a : alunos) {
+			
+			a.setAvaliacao(avaliacao); //adiciona avaliacao a todos alunos com a nota maxima
+			
+		}
+	}
 	
 	
 	

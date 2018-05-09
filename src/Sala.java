@@ -16,11 +16,39 @@ public class Sala {
 			
 			criaAula();
 			
-			
+			adicionaAvaliacao();
 		}
 		
     }
-    private static Aluno[] CriaAluno() {
+    private static void adicionaAvaliacao() throws ParseException {
+		
+    	int id = 0; // 
+		
+		while(true) {
+			
+			if(turma[id] != null ) {
+				System.out.println( "--------------------------------" );
+				
+				System.out.println("Posição ["+id+"]\n" + turma[id].toString());
+
+				System.out.println( "--------------------------------" );
+			
+			}else{
+				
+				break;
+			}
+			
+			id++;
+			
+		}
+		
+    	int esc = console.dInt("Digite a turma para inserir avaliacao");
+    	
+    	Avaliacao a = new Avaliacao(console.dDouble("Digite o valor total da avaliacao: "),console.dString("Digite a data: 'dd/mm/aaaa'"));
+    	
+		turma[esc].setAvaliacao(a);
+	}
+	private static Aluno[] CriaAluno() {
     	// cria no maximo 5 alunos e retorna 
     	
     	System.out.println("------Cadastrando Alunos-------");

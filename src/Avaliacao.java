@@ -1,14 +1,25 @@
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 public class Avaliacao {
-    private double nota;
+   
+	private double nota;
     
-    SimpleDateFormat sdf1= new SimpleDateFormat("dd/MM/yyyy"); //você pode usar outras máscaras
+    SimpleDateFormat formato= new SimpleDateFormat("dd/MM/yyyy"); //você pode usar outras máscaras
     
     private Date data=new Date(); 
 
-    public double getNota() {
+    
+    
+    public Avaliacao(double nota, String data) throws ParseException {
+
+		this.nota = nota;
+		
+		this.data = formato.parse(data);
+	}
+
+	public double getNota() {
     
     	return nota;
     }

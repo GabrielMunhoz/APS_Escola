@@ -3,7 +3,8 @@ public class Aluno implements Comparable<Aluno>{
     private String nome;
     private int matricula;
     private String Presenca;
-    
+    private Avaliacao[] avaliacao = new Avaliacao[3];
+     
     public Aluno(String nome, int mat) {
 		
     	this.nome = nome; 
@@ -38,6 +39,21 @@ public class Aluno implements Comparable<Aluno>{
 		
 			this.Presenca = presenca;
 		
+	}
+
+	public Avaliacao[] getAvaliacao() {
+		return avaliacao;
+	}
+
+	public void setAvaliacao(Avaliacao avaliacao1) {
+		int id = 0;
+		while(true) {
+			if(avaliacao[id]==null) {
+				break;
+			}
+			id++;
+		}
+		avaliacao[id] = avaliacao1;
 	}
 
 	@Override
