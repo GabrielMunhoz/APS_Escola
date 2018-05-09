@@ -38,5 +38,11 @@ public class Avaliacao {
         
     	this.data = data;
     }
+
+	@Override
+	public String toString() {
+		return "Avaliacao [data da prova =" + formato.format(data) + " nota=" + nota +"]";
+	}
+    
     
 }

@@ -41,19 +41,34 @@ public class Aluno implements Comparable<Aluno>{
 		
 	}
 
-	public Avaliacao[] getAvaliacao() {
-		return avaliacao;
+	public void getAvaliacao() {
+		
+		for(Avaliacao a : avaliacao) {
+			if(a !=null) {
+			System.out.println(a.toString());
+			}
+			break;
+		}
 	}
 
-	public void setAvaliacao(Avaliacao avaliacao1) {
-		int id = 0;
+	public void setAvaliacao(String data, Double nota) {
+		try {
+		
+			
+			int id = 0;
 		while(true) {
 			if(avaliacao[id]==null) {
 				break;
 			}
 			id++;
 		}
-		avaliacao[id] = avaliacao1;
+		
+		Avaliacao a = new Avaliacao(nota,data);
+		avaliacao[id] = a;
+		
+		}catch(Exception ex) {
+			System.out.println("Houve uma excessão. "+ex.toString());
+		}
 	}
 
 	@Override

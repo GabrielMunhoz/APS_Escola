@@ -25,14 +25,31 @@ public class Turma{
 		return "Turma "+disciplina.toString()+ "\nAlunos:" + Arrays.toString(getAlunos());
 	}
 	
-	public void setAvaliacao(Avaliacao avaliacao) {
-		disciplina.setAvaliacoes(avaliacao);
+	public void setAvaliacao() {
+		Console console = new Console();
+		
+		String data=console.dString("Digite a data 'dd/mm/aaaa' da avaliação:");
 		
 		for(Aluno a : alunos) {
 			
-			a.setAvaliacao(avaliacao); //adiciona avaliacao a todos alunos com a nota maxima
+			System.out.println(a.getNome());
+			
+			Double nota = console.dDouble("Digite a Nota do aluno: ");
+			
+			a.setAvaliacao(data,nota );
 			
 		}
+		
+		for(Aluno a : alunos) {
+			System.out.println( "--------------------------------" );
+			
+			System.out.println("Aluno: "+a.getNome());
+			
+			a.getAvaliacao();
+			
+			System.out.println( "--------------------------------" );
+		}
+		
 	}
 	
 	

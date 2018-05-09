@@ -16,38 +16,10 @@ public class Sala {
 			
 			criaAula();
 			
-			adicionaAvaliacao();
+			adicionarAvaliacao();
 		}
 		
     }
-    private static void adicionaAvaliacao() throws ParseException {
-		
-    	int id = 0; // 
-		
-		while(true) {
-			
-			if(turma[id] != null ) {
-				System.out.println( "--------------------------------" );
-				
-				System.out.println("Posição ["+id+"]\n" + turma[id].toString());
-
-				System.out.println( "--------------------------------" );
-			
-			}else{
-				
-				break;
-			}
-			
-			id++;
-			
-		}
-		
-    	int esc = console.dInt("Digite a turma para inserir avaliacao");
-    	
-    	Avaliacao a = new Avaliacao(console.dDouble("Digite o valor total da avaliacao: "),console.dString("Digite a data: 'dd/mm/aaaa'"));
-    	
-		turma[esc].setAvaliacao(a);
-	}
 	private static Aluno[] CriaAluno() {
     	// cria no maximo 5 alunos e retorna 
     	
@@ -142,7 +114,7 @@ public class Sala {
 		}// fim while que verifica posicao livre
 		
 		aula[id] = new Aula(turma[esc] , console.dString("Digite a data 'dd/mm/aaaa'"), 
-				console.dString("Digite a descriçcao da aula") ); 
+				console.dString("Digite a descriçao da aula") ); 
 		// cria a aula passando a turma escolhida anteriormente 
 		
 		aula[id].chamada(); //Realiza chamada conforme aula adicionada
@@ -150,9 +122,35 @@ public class Sala {
 		
 	}// fim metodo cria aula
 	
-    public static void adicionarAvaliação() {
+    public static void adicionarAvaliacao() throws ParseException {
     	//adiciona ate 3 avaliacoes para cada aluno selecionando a turma cadastrada
+
+    	System.out.println("------Cadastrando Avaliacao-------");
     	
+    	int id = 0; // 
+		
+		while(true) {
+			
+			if(turma[id] != null ) {
+				System.out.println( "--------------------------------" );
+				
+				System.out.println("Posição ["+id+"]\n" + turma[id].toString());
+
+				System.out.println( "--------------------------------" );
+			
+			}else{
+				
+				break;
+			}
+			
+			id++;
+			
+		}
+		
+    	int esc = console.dInt("Digite a turma para inserir avaliacao");
+    	
+    	turma[esc].setAvaliacao();
+  
     }
     public static void verificaMediaAlunos() {
     	//verifica media dos alunos de cada turma 
