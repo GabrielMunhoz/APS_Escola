@@ -40,22 +40,28 @@ public class Aluno implements Comparable<Aluno>{
 			this.Presenca = presenca;
 		
 	}
+	
+	public Avaliacao[] getAvaliacao() {
+		
+		return avaliacao;
+	}
 
-	public void getAvaliacao() {
+	public void escreveAvaliacao() {
 		
 		for(Avaliacao a : avaliacao) {
 			if(a !=null) {
 			System.out.println(a.toString());
 			}
-			break;
+			else {
+				break;
+			}
 		}
 	}
 
 	public void setAvaliacao(String data, Double nota) {
 		try {
 		
-			
-			int id = 0;
+		int id = 0;
 		while(true) {
 			if(avaliacao[id]==null) {
 				break;

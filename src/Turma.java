@@ -45,10 +45,40 @@ public class Turma{
 			
 			System.out.println("Aluno: "+a.getNome());
 			
-			a.getAvaliacao();
+			a.escreveAvaliacao();
 			
 			System.out.println( "--------------------------------" );
 		}
+		
+	}
+
+	public void getMedia() {
+		for( Aluno a : alunos ) {
+			
+			Avaliacao av[] = a.getAvaliacao();
+			
+			int id = 0;
+			double nota = 0 ;
+			
+			while(id<av.length) {
+				if(av[id] !=null) {
+					nota+=av[id].getNota();
+					id++;
+				}else {
+					
+				break;
+				
+				}
+			}
+			
+			System.out.println("id="+id + "Nota: "+nota);
+			double aux = nota/(id);
+			nota = aux;
+			System.out.println( "--------------------------------" );
+			System.out.println("Nome:"+a.getNome()+" Media = "+ nota);
+			System.out.println( "--------------------------------" );
+		}
+		
 		
 	}
 	

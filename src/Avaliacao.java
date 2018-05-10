@@ -1,5 +1,3 @@
-
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 public class Avaliacao {
@@ -12,11 +10,16 @@ public class Avaliacao {
 
     
     
-    public Avaliacao(double nota, String data) throws ParseException {
+    public Avaliacao(double nota, String data)  {
 
 		this.nota = nota;
 		
-		this.data = formato.parse(data);
+		try {
+			this.data = formato.parse(data);
+		} catch (Exception e) {
+			
+			e.toString();
+		}
 	}
 
 	public double getNota() {
@@ -34,10 +37,7 @@ public class Avaliacao {
     	return data;
     }
 
-    public void setData(Date data) {
-        
-    	this.data = data;
-    }
+   
 
 	@Override
 	public String toString() {

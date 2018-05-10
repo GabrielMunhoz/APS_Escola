@@ -1,4 +1,3 @@
-import java.text.ParseException;
 
 public class Sala {
 		
@@ -8,15 +7,22 @@ public class Sala {
 	
 	static Aula aula[] = new Aula[10];
 	
-	public static void main(String[] args) throws ParseException {
+	public static void main(String[] args) {
 		while(true) {
 			Aluno aluno[]= CriaAluno();
 			
 			criaTurma(aluno);
 			
-			criaAula();
+			try {
+				criaAula();
+				adicionarAvaliacao();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.toString();
+			}
 			
-			adicionarAvaliacao();
+			verificaMediaAlunos();
+			
 		}
 		
     }
@@ -72,7 +78,7 @@ public class Sala {
 	
 	}// final metodo cadastra disciplina
 	
-	public static void criaAula() throws ParseException {
+	public static void criaAula()  {
 		//cria aula para turma 
 		
 		System.out.println("------Cadastrando Aula-------");
@@ -113,8 +119,13 @@ public class Sala {
 		
 		}// fim while que verifica posicao livre
 		
-		aula[id] = new Aula(turma[esc] , console.dString("Digite a data 'dd/mm/aaaa'"), 
-				console.dString("Digite a descriçao da aula") ); 
+		try {
+			aula[id] = new Aula(turma[esc] , console.dString("Digite a data 'dd/mm/aaaa'"), 
+					console.dString("Digite a descriçao da aula") );
+		} catch (Exception e) {
+			
+			e.toString();
+		} 
 		// cria a aula passando a turma escolhida anteriormente 
 		
 		aula[id].chamada(); //Realiza chamada conforme aula adicionada
@@ -122,7 +133,7 @@ public class Sala {
 		
 	}// fim metodo cria aula
 	
-    public static void adicionarAvaliacao() throws ParseException {
+    public static void adicionarAvaliacao() {
     	//adiciona ate 3 avaliacoes para cada aluno selecionando a turma cadastrada
 
     	System.out.println("------Cadastrando Avaliacao-------");
@@ -137,14 +148,14 @@ public class Sala {
 				System.out.println("Posição ["+id+"]\n" + turma[id].toString());
 
 				System.out.println( "--------------------------------" );
-			
+				
+				id++;
+				
 			}else{
 				
 				break;
 			}
-			
-			id++;
-			
+
 		}
 		
     	int esc = console.dInt("Digite a turma para inserir avaliacao");
@@ -154,6 +165,30 @@ public class Sala {
     }
     public static void verificaMediaAlunos() {
     	//verifica media dos alunos de cada turma 
+    	int id = 0; // contador
+		
+		while(true) {
+			
+			if(turma[id] != null ) {
+				System.out.println( "--------------------------------" );
+				
+				System.out.println("Posição ["+id+"]\n" + turma[id].toString());
+
+				System.out.println( "--------------------------------" );
+				
+				id++;
+			
+			}else{
+				
+				break;
+			}
+			
+			}// verifica quantas turma estao cadastradas
+			
+			int esc = console.dInt("Digite a posição da Turma, para verificar médias dos alunos");
+			
+			turma[esc].getMedia();
+    	
     	
     }
 }

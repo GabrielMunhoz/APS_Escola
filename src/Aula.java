@@ -1,7 +1,4 @@
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Date;
 
 public class Aula {
@@ -11,11 +8,16 @@ public class Aula {
     private String descricao;
     
     
-    public Aula(Turma t, String data, String descri) throws ParseException {
+    public Aula(Turma t, String data, String descri) {
     	
     	turma = t;
     	
-    	this.data = formato.parse(data);
+    	try {
+			this.data = formato.parse(data);
+		} catch (Exception e) {
+			
+			e.toString();
+		}
     	
     	descricao = descri;
     	
@@ -46,9 +48,10 @@ public class Aula {
     		p.setPresenca(console.dString("Presença: P ou A?"));
     	}
     	for(Aluno p : turma.getAlunos()) {
-    		
+    		System.out.println("--------------------------------");
+    		System.out.println(toString());
     		System.out.println(p.toString()+"Presença : "+p.getPresenca());
-    		
+    		System.out.println("--------------------------------");
     	}
     	
     }
