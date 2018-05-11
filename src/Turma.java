@@ -7,7 +7,7 @@ public class Turma{
 	private Aluno alunos[] = new Aluno[5]; 
     
 	public Turma(Aluno[] alunos2, Disciplina disc) {
-	
+		
 		alunos = alunos2;
 		
 		disciplina = disc;
@@ -71,11 +71,11 @@ public class Turma{
 				}
 			}
 			
-			System.out.println("id="+id + "Nota: "+nota);
+			
 			double aux = nota/(id);
 			nota = aux;
 			System.out.println( "--------------------------------" );
-			System.out.println("Nome:"+a.getNome()+" Media = "+ nota);
+			System.out.printf("Nome:"+a.getNome()+" Media = %.2f\n",nota);
 			System.out.println( "--------------------------------" );
 		}
 		

@@ -85,7 +85,7 @@ public class Sala {
 		
 		int id = 0; // contador
 		
-		while(true) {
+		while(id<turma.length) {
 			
 			if(turma[id] != null ) {
 				System.out.println( "--------------------------------" );
@@ -140,7 +140,7 @@ public class Sala {
     	
     	int id = 0; // 
 		
-		while(true) {
+		while(id<turma.length) {
 			
 			if(turma[id] != null ) {
 				System.out.println( "--------------------------------" );
@@ -157,17 +157,16 @@ public class Sala {
 			}
 
 		}
-		
-    	int esc = console.dInt("Digite a turma para inserir avaliacao");
+	   	int esc = console.dInt("Digite a turma para inserir avaliacao");
     	
-    	turma[esc].setAvaliacao();
+	   	turma[esc].setAvaliacao();
   
     }
     public static void verificaMediaAlunos() {
     	//verifica media dos alunos de cada turma 
     	int id = 0; // contador
 		
-		while(true) {
+		while(id<turma.length) {
 			
 			if(turma[id] != null ) {
 				System.out.println( "--------------------------------" );

@@ -18,7 +18,7 @@ public class Disciplina {
 	
 	public void setAvaliacoes(Avaliacao avaliacao) {
 		int id = 0;
-		while(true) {
+		while(id<avaliacoes.length) {
 			if(avaliacoes[id]==null) {
 				break;
 			}
